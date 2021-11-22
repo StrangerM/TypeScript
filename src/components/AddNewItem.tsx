@@ -1,12 +1,15 @@
 import { render } from "@testing-library/react";
 import React, {useState} from "react";
 import ReactDOM from "react-dom";
+import Select from "react-select";
+import{MyComponent} from "./SelectComponent"
 
 export const AddItem : React.FC = () =>{
 
 const [ name, setName] = useState<string>('');
 const [ descr, setDescr] = useState<string>('');
-const [ sel, setSel] = useState<string>('');
+
+
 const [ file, setPicture] = useState<File>();
     
 const changeHandler = (event : React.ChangeEvent<HTMLInputElement>) =>{
@@ -16,9 +19,7 @@ const changeHandler = (event : React.ChangeEvent<HTMLInputElement>) =>{
 const changeHandler1 = (event : React.ChangeEvent<HTMLInputElement>) =>{
     setDescr(event.target.value)
 }
-const changeHandler2 = (event : React.ChangeEvent<HTMLSelectElement>) =>{
-    setSel(event.target.value)
-}
+
 
 const onChangePicture = (event : React.FormEvent) =>{
     const files = (event.target as HTMLInputElement).files
@@ -29,12 +30,13 @@ const onChangePicture = (event : React.FormEvent) =>{
 }
 
    const PressButton = () => {
+
    
   }
     
     return(
         <div className="input-field">
-            <label htmlFor="first">First number</label>
+            <label htmlFor="first">Name of product</label>
              <form id="first" >
                     <fieldset >
                        <legend>Add new Item</legend> 
@@ -45,7 +47,7 @@ const onChangePicture = (event : React.FormEvent) =>{
                             type="text"
                             placeholder="Input name of product"/>
                         <label htmlFor="nameId" className="active">
-                            Name
+                            Description of product
                         </label>
                        <input
                             onChange ={changeHandler}
@@ -55,26 +57,20 @@ const onChangePicture = (event : React.FormEvent) =>{
                             placeholder="Add some description for the product"/>
                        <label htmlFor="DescrId" className="active">
                            Description
-                        </label>              
-                       <label  htmlFor="selectId" className="active">
-                           Choose Category:
-                        </label>
-                       <select
-                            id="selectId"
-                            value={sel}
-                            onChange={changeHandler2}
-                            name="cars">
-                         <option value="Watches">Watches</option>
-                         <option value="Mobile phones">Mobile phones</option>
-                         <option value="Audio">Audio</option>
-                         <option value="Game gadgets">Game gadgets</option>
-                       </select>
-                        <input 
-                        type="file" 
-                        onChange={onChangePicture}
-                        id="upload"/>
+                        </label>  
+                        <div>
+                            <MyComponent />
+                        </div>
+                       <div className ="upl">
+                            <input 
+                            type="file" 
+                            onChange={onChangePicture}
+                            id="upload"/>
+                        </div>
+                        <div>
                         <label  htmlFor="upload">Load Picture:</label>
                        <button type="submit" id="butAd" onClick={PressButton}>Upload Item</button>
+                       </div>
                     </fieldset>
                 </form>
 
