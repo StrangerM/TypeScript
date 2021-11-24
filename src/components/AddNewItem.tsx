@@ -38,8 +38,8 @@ const onChangePicture = (event : React.FormEvent) =>{
         <div className="input-field">
             <label htmlFor="first">Name of product</label>
              <form id="first" >
-                    <fieldset >
-                       <legend>Add new Item</legend> 
+                    <fieldset  >
+                       <legend className="upl">Add new Item</legend> 
                         <input
                             onChange ={changeHandler1}
                             value={descr}
