@@ -2,7 +2,8 @@ import { render } from "@testing-library/react";
 import React, {useState} from "react";
 import ReactDOM from "react-dom";
 import Select from "react-select";
-import{MyComponent} from "./SelectComponent"
+import{MyComponent} from "./SelectComponent";
+import { Item } from "../interfaces";
 
 export const AddItem : React.FC = () =>{
 
